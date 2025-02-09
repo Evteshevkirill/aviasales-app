@@ -1,0 +1,9 @@
+@use '../vars.scss' as *;
+
+.tickets__list {
+  margin-top: 20px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

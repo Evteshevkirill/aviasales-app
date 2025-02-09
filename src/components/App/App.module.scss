@@ -1,0 +1,31 @@
+@use '../vars.scss' as *;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $main-font;
+  font-size: $text-size-12;
+  font-weight: $main-font-600;
+  letter-spacing: $line-height-05;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.aviasales-app {
+  padding: 0 100px;
+  max-width: 960px;
+  background-color: #f3f7fa;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
