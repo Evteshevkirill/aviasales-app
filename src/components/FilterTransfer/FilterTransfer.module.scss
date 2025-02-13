@@ -24,8 +24,8 @@
 
 .custom__checkbox {
   display: flex;
-  align-items: center; /* Выравнивание по вертикали */
-  gap: 10px; /* Зазор между чекбоксом и текстом */
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
   font-size: 13px;
   text-transform: none;
@@ -34,14 +34,12 @@
   user-select: none;
 }
 
-/* Скрываем стандартный чекбокс */
 .custom__checkbox input {
   position: absolute;
-  opacity: 0; /* Скрыть реальный чекбокс */
-  pointer-events: none; /* Сделать его некликабельным */
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Создаем кастомный чекбокс */
 .custom__checkbox .box {
   position: relative;
   width: 20px;
@@ -54,12 +52,10 @@
   background-color: white;
 }
 
-/* Стили чекбокса, когда он выбран */
 .custom__checkbox input:checked + .box {
-  border-color: $main-color-blue; /* Цвет бордеров при выбранном чекбоксе */
+  border-color: $main-color-blue;
 }
 
-/* Галочка */
 .custom__checkbox .box::after {
   content: '';
   width: 8px;
@@ -71,12 +67,10 @@
   position: absolute;
 }
 
-/* При выборе чекбокса показываем галочку */
 .custom__checkbox input:checked + .box::after {
   opacity: 1;
 }
 
-/* Текст справа от чекбокса */
 .custom__checkbox span {
   white-space: nowrap;
 }

@@ -7,48 +7,48 @@
   background-color: $white;
   box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-}
 
-.ticket__wrapper {
-  padding: 20px;
-}
+  &__wrapper {
+    padding: 20px;
+  }
 
-.ticket__header {
-  display: flex;
-  justify-content: space-between;
-}
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.ticket__price {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  font-size: 24px;
-  color: $main-color-blue;
-  letter-spacing: 0;
-}
+  &__price {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    font-size: 24px;
+    color: $main-color-blue;
+    letter-spacing: 0;
+  }
 
-.ticket__body {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+  &__body {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.ticket__items {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  text-align: left;
-}
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+  }
 
-.ticket__item-info {
-  width: 140px;
-}
-.ticket__item-title {
-  color: $text-color-grey-2;
-}
+  &__item-info {
+    width: 140px;
+  }
+  &__item-title {
+    color: $text-color-grey-2;
+  }
 
-.ticket__item-text {
-  font-size: 14px;
-  color: $text-color-grey;
+  &__item-text {
+    font-size: 14px;
+    color: $text-color-grey;
+  }
 }

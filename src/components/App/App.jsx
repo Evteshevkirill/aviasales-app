@@ -13,7 +13,7 @@ function App() {
         <div className={classes['filter__transfer-menu']}>
           <FilterTransfer />
         </div>
-        <div className={classes.tickets__menu}>
+        <div className={classes['filter__tickets-menu']}>
           <FilterTickets />
           <TicketsList />
         </div>

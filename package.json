@@ -13,11 +13,13 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.84.0"
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

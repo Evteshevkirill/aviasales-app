@@ -11,18 +11,22 @@
   font-weight: $main-font-600;
   letter-spacing: $line-height-05;
   text-transform: uppercase;
-}
 
-.button__filter:first-child {
-  border-radius: 10px 0 0 10px;
-}
+  &__filter:first-child {
+    border-radius: 10px 0 0 10px;
+  }
 
-.button__filter:last-child {
-  border-radius: 0 10px 10px 0;
+  &__filter:last-child {
+    border-radius: 0 10px 10px 0;
+  }
 }
 
 .active {
   background-color: $main-color-blue;
   color: $white;
+  border: 1px solid $main-color-blue;
+}
+
+.button__filter:hover {
   border: 1px solid $main-color-blue;
 }
