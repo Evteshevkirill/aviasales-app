@@ -6,9 +6,6 @@ export default function TicketsList() {
   return (
     <ul className={classes.tickets__list}>
       <Ticket />
-      <Ticket />
-      <Ticket />
-      <Ticket />
     </ul>
   )
 }
