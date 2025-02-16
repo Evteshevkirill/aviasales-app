@@ -12,17 +12,17 @@ import classes from './App.module.scss'
 function App() {
   const dispatch = useDispatch()
 
-  const { loading, error, searchId } = useSelector((state) => state.tickets)
+  const { loading, error, searchId, stop } = useSelector((state) => state.tickets)
 
   useEffect(() => {
     dispatch(fetchSearchId())
   }, [dispatch])
 
   useEffect(() => {
-    if (searchId) {
+    if (searchId && !stop) {
       dispatch(fetchTickets(searchId))
     }
-  }, [searchId, dispatch])
+  }, [searchId, stop, dispatch])
 
   return (
     <div className={classes['aviasales-app']}>

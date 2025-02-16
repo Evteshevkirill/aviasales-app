@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-await-in-loop */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
@@ -13,16 +15,29 @@ export const fetchSearchId = createAsyncThunk('tickets/fetchSearchId', async () 
 // Получение билетов
 export const fetchTickets = createAsyncThunk('tickets/fetchTickets', async (searchId, { rejectWithValue }) => {
   try {
+    if (!searchId) {
+      throw new Error('searchId is required')
+    }
+
     let allTickets = []
+    let stop = false
 
-    const response = await fetch(`${API_BASE}/tickets?searchId=${searchId}`)
-    if (response.status === 500) throw new Error('Ошибка, перезагрузите страницу')
+    const fetchPage = async () => {
+      const response = await fetch(`${API_BASE}/tickets?searchId=${searchId}`)
 
-    const data = await response.json()
+      if (response.status === 500) {
+        return fetchPage()
+      }
 
-    if (!data.stop) {
+      const data = await response.json()
+
       allTickets = [...allTickets, ...data.tickets]
-      fetchTickets(allTickets)
+
+      stop = data.stop
+    }
+
+    while (!stop) {
+      await fetchPage()
     }
 
     return allTickets
