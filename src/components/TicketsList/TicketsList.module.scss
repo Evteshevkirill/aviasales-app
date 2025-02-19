@@ -7,3 +7,25 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.tickets__more {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  background-color: $main-color-blue;
+  border: 1px solid #dfe5ec;
+  cursor: pointer;
+  font-family: $main-font;
+  font-size: $text-size-12;
+  font-weight: $main-font-600;
+  letter-spacing: $line-height-05;
+  text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.tickets__not {
+  text-align: center;
+  font-size: $text-size-12;
+  text-transform: none;
+  color: red;
+}

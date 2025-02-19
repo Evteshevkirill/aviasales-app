@@ -19,6 +19,7 @@ body {
 
 .aviasales-app {
   padding: 0 100px;
+  padding-bottom: 20px;
   max-width: 960px;
   background-color: #f3f7fa;
   margin: 0 auto;
@@ -28,4 +29,7 @@ main {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
+}
+
+.filter__tickets-menu {
 }

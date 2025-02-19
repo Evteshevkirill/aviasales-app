@@ -1,29 +1,13 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import { fetchSearchId, fetchTickets } from '../redux/store/ticketsSlice'
 import Logo from '../Header/Logo'
 import FilterTickets from '../FilterTickets/FilterTickets'
 import FilterTransfer from '../FilterTransfer/FilterTransfer'
 import TicketsList from '../TicketsList/TicketsList'
+import Loader from '../Loader/Loader'
+import withApp from '../HOC/withApp'
 
 import classes from './App.module.scss'
 
-function App() {
-  const dispatch = useDispatch()
-
-  const { loading, error, searchId, stop } = useSelector((state) => state.tickets)
-
-  useEffect(() => {
-    dispatch(fetchSearchId())
-  }, [dispatch])
-
-  useEffect(() => {
-    if (searchId && !stop) {
-      dispatch(fetchTickets(searchId))
-    }
-  }, [searchId, stop, dispatch])
-
+function App({ error, loading }) {
   return (
     <div className={classes['aviasales-app']}>
       <Logo />
@@ -33,13 +17,13 @@ function App() {
         </div>
         <div className={classes['filter__tickets-menu']}>
           <FilterTickets />
-          {loading && <p>Loading...</p>}
-          {error && <p>{`Не удалось загрузить билеты: ${error}`}</p>}
-          {!error && !loading && <TicketsList />}
+          {loading && <Loader />}
+          {error && <p>{error}</p>}
+          <TicketsList />
         </div>
       </main>
     </div>
   )
 }
 
-export default App
+export default withApp(App)

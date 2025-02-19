@@ -1,5 +1,12 @@
 @use '../vars.scss' as *;
 
+.buttons__filter {
+  display: flex;
+  position: sticky;
+  flex-grow: 1;
+  z-index: 1;
+}
+
 .button__filter {
   width: 168px;
   padding: 15px;
@@ -19,14 +26,14 @@
   &__filter:last-child {
     border-radius: 0 10px 10px 0;
   }
+
+  &__filter:hover {
+    border: 1px solid $main-color-blue;
+  }
 }
 
 .active {
   background-color: $main-color-blue;
   color: $white;
-  border: 1px solid $main-color-blue;
-}
-
-.button__filter:hover {
   border: 1px solid $main-color-blue;
 }
