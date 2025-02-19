@@ -25,7 +25,7 @@ export const fetchTickets = createAsyncThunk(
         const response = await fetch(`${API_BASE}/tickets?searchId=${searchId}`)
 
         if (response.status === 500) {
-          return fetchAllTickets()
+          return fetchTickets()
         }
 
         const data = await response.json()
