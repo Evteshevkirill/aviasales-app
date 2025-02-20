@@ -1,4 +1,6 @@
-import TicketBody from './TicketBody'
+import PropTypes from 'prop-types'
+
+import TicketsBody from './TicketsBody'
 import classes from './Ticket.module.scss'
 
 export default function Ticket({ ticket }) {
@@ -14,8 +16,20 @@ export default function Ticket({ ticket }) {
             alt="avia-company"
           />
         </div>
-        <TicketBody segments={segments} />
+        <TicketsBody segments={segments} />
       </div>
     </li>
   )
+}
+
+Ticket.defaultProps = {
+  ticket: {},
+}
+
+Ticket.propTypes = {
+  ticket: PropTypes.shape({
+    price: PropTypes.number,
+    carrier: PropTypes.string,
+    segments: PropTypes.array,
+  }),
 }

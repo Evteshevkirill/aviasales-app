@@ -1,9 +1,12 @@
 /* eslint-disable indent */
+import PropTypes from 'prop-types'
+
 import withFilterTransfer from '../HOC/withFilterTransfer'
 
 import classes from './FilterTransfer.module.scss'
 
-function FilterTransfer({ checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree, changeCheckBox }) {
+function FilterTransfer(props) {
+  const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree, changeCheckBox } = props
   return (
     <section className={classes.filters__transfer}>
       <h1 className={classes['filters__transfer-title']}>Количество пересадок</h1>
@@ -69,3 +72,12 @@ function FilterTransfer({ checkedAll, checkedNot, checkedOne, checkedTwo, checke
 }
 
 export default withFilterTransfer(FilterTransfer)
+
+FilterTransfer.propTypes = {
+  changeCheckBox: PropTypes.func.isRequired,
+  checkedAll: PropTypes.bool.isRequired,
+  checkedNot: PropTypes.bool.isRequired,
+  checkedOne: PropTypes.bool.isRequired,
+  checkedTwo: PropTypes.bool.isRequired,
+  checkedThree: PropTypes.bool.isRequired,
+}

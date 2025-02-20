@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import Logo from '../Header/Logo'
 import FilterTickets from '../FilterTickets/FilterTickets'
 import FilterTransfer from '../FilterTransfer/FilterTransfer'
@@ -27,3 +29,12 @@ function App({ error, loading }) {
 }
 
 export default withApp(App)
+
+App.defaultProps = {
+  error: '',
+}
+
+App.propTypes = {
+  error: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+}

@@ -21,7 +21,7 @@ const transferSlice = createSlice({
     checkThree(state) {
       state.checkedThree = !state.checkedThree
     },
-    checkAuto(state) {
+    checkAllAuto(state) {
       state.checkedAll = true
     },
     unCheckAll(state) {
@@ -33,6 +33,6 @@ const transferSlice = createSlice({
   },
 })
 
-export const { checkAll, checkNot, checkOne, checkTwo, checkThree, checkAuto, unCheckAll, clearCheck } =
+export const { checkAll, checkNot, checkOne, checkTwo, checkThree, checkAllAuto, unCheckAll, clearCheck } =
   transferSlice.actions
 export default transferSlice.reducer

@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint src/**/*.jsx",
+    "lint": "eslint src/**/*.{jsx,js}",
     "preview": "vite preview",
-    "lint:fix": "eslint src/**/*.jsx --fix",
+    "lint:fix": "eslint src/**/*.{jsx,js} --fix",
     "format": "prettier --write .",
     "lint-staged": "lint-staged",
     "prepare": "husky"

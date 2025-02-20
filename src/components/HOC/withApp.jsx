@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchSearchId, fetchTickets } from '../redux/fetchTicketsSlice'
+import { fetchSearchId, fetchTickets } from '../Api/fetchTickets'
 
 export default function withApp(Component) {
   return function (props) {

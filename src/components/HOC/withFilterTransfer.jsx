@@ -9,7 +9,7 @@ import {
   checkOne,
   checkTwo,
   checkThree,
-  checkAuto,
+  checkAllAuto,
   unCheckAll,
   clearCheck,
 } from '../redux/transferFilterSlice'
@@ -23,7 +23,7 @@ export default function withFilterTransfer(Component) {
     )
 
     useEffect(() => {
-      if (checkedNot && checkedOne && checkedTwo && checkedThree && !checkedAll) dispatch(checkAuto())
+      if (checkedNot && checkedOne && checkedTwo && checkedThree && !checkedAll) dispatch(checkAllAuto())
       if (checkedAll && (!checkedNot || !checkedOne || !checkedTwo || !checkedThree)) dispatch(unCheckAll())
     }, [checkedNot, checkedOne, checkedTwo, checkedThree, checkedAll, dispatch])
 
