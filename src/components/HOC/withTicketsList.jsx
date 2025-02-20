@@ -4,7 +4,7 @@
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
-import { getFilteredTickets } from '../redux/selectors'
+import { getFilteredTickets, transferFilter } from '../redux/selectors'
 
 export default function withTicketsList(Component) {
   return function () {
@@ -12,7 +12,7 @@ export default function withTicketsList(Component) {
 
     const filteredTickets = useSelector(getFilteredTickets)
 
-    const { checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector((state) => state.transferFilter)
+    const { checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector(transferFilter)
 
     const unCheckedAllCheckbox = !checkedNot && !checkedOne && !checkedTwo && !checkedThree ? true : null
 

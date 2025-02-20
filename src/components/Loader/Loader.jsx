@@ -1,10 +1,12 @@
 import { useSelector } from 'react-redux'
 import { Alert, Flex, Spin } from 'antd'
 
-export default function Loader() {
-  const { loading } = useSelector((state) => state.fetchTickets)
+import { fetchTickets, transferFilter } from '../redux/selectors'
 
-  const { checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector((state) => state.transferFilter)
+export default function Loader() {
+  const { loading } = useSelector(fetchTickets)
+
+  const { checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector(transferFilter)
 
   const unChecked = !checkedNot && !checkedOne && !checkedTwo && !checkedThree ? true : null
 

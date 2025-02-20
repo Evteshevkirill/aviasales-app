@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
 
 import { handlePrice, handleFast, handleOptimal } from '../redux/ticketsFilterSlice'
+import { ticketsFilter } from '../redux/selectors'
 
 import classes from './FilterTickets.module.scss'
 
 export default function FilterTickets() {
   const dispatch = useDispatch()
-  const { lowPrice, fast, optimal } = useSelector((state) => state.ticketsFilter)
+  const { lowPrice, fast, optimal } = useSelector(ticketsFilter)
 
   return (
     <div className={classes.buttons__filter}>

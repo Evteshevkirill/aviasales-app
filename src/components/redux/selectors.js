@@ -2,16 +2,18 @@
 /* eslint-disable indent */
 import { createSelector } from 'reselect'
 
+export const fetchTickets = (state) => state.fetchTickets.tickets
+export const transferFilter = (state) => state.transferFilter
+export const ticketsFilter = (state) => state.ticketsFilter
+
 export const getFilteredTickets = createSelector(
-  (state) => state.fetchTickets.tickets,
-  (state) => state.transferFilter,
-  (state) => state.ticketsFilter,
-  (tickets, transferFilter, ticketsFilter) => {
-    const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree } = transferFilter
+  [fetchTickets, transferFilter, ticketsFilter],
+  (AllTickets, activeTransferFilter, activeTicketsFilter) => {
+    const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree } = activeTransferFilter
 
-    const { lowPrice, fast, optimal } = ticketsFilter
+    const { lowPrice, fast, optimal } = activeTicketsFilter
 
-    const filterTransfer = tickets.filter((ticket) => {
+    const filterTransfer = AllTickets.filter((ticket) => {
       const stopsCount = ticket.segments.reduce((count, segment) => count + segment.stops.length, 0)
 
       switch (true) {

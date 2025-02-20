@@ -13,14 +13,13 @@ import {
   unCheckAll,
   clearCheck,
 } from '../redux/transferFilterSlice'
+import { transferFilter } from '../redux/selectors'
 
 export default function withFilterTransfer(Component) {
   return function () {
     const dispatch = useDispatch()
 
-    const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector(
-      (state) => state.transferFilter
-    )
+    const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector(transferFilter)
 
     useEffect(() => {
       if (checkedNot && checkedOne && checkedTwo && checkedThree && !checkedAll) dispatch(checkAllAuto())
