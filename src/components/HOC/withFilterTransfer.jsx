@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 /* eslint-disable indent */
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 
 import {
   checkAll,
@@ -26,22 +26,25 @@ export default function withFilterTransfer(Component) {
       if (checkedAll && (!checkedNot || !checkedOne || !checkedTwo || !checkedThree)) dispatch(unCheckAll())
     }, [checkedNot, checkedOne, checkedTwo, checkedThree, checkedAll, dispatch])
 
-    const changeCheckBox = (id) => {
-      switch (id) {
-        case 'all':
-          return checkedAll ? dispatch(clearCheck()) : dispatch(checkAll())
-        case 'without':
-          return dispatch(checkNot())
-        case 'one':
-          return dispatch(checkOne())
-        case 'two':
-          return dispatch(checkTwo())
-        case 'three':
-          return dispatch(checkThree())
-        default:
-          return null
-      }
-    }
+    const changeCheckBox = useCallback(
+      (id) => {
+        switch (id) {
+          case 'all':
+            return checkedAll ? dispatch(clearCheck()) : dispatch(checkAll())
+          case 'without':
+            return dispatch(checkNot())
+          case 'one':
+            return dispatch(checkOne())
+          case 'two':
+            return dispatch(checkTwo())
+          case 'three':
+            return dispatch(checkThree())
+          default:
+            return null
+        }
+      },
+      [checkedAll, dispatch]
+    )
     return (
       <Component
         changeCheckBox={changeCheckBox}
