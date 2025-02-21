@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable func-names */
 import { useSelector } from 'react-redux'
-import { useState, useCallback } from 'react'
+import { useState } from 'react'
 
 import { getFilteredTickets, transferFilter } from '../redux/selectors'
 
@@ -16,9 +16,9 @@ export default function withTicketsList(Component) {
 
     const unCheckedAllCheckbox = !checkedNot && !checkedOne && !checkedTwo && !checkedThree ? true : null
 
-    const showMoreTickets = useCallback(() => {
+    const showMoreTickets = () => {
       setVisibleTickets((prev) => prev + 5)
-    }, [])
+    }
 
     return (
       <Component
