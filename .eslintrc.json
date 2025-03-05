@@ -58,15 +58,5 @@
         "moduleDirectory": ["node_modules", "src/"]
       }
     }
-  },
-  "import/extensions": [
-    "error",
-    "ignorePackages",
-    {
-      "js": "never",
-      "jsx": "never",
-      "ts": "never",
-      "tsx": "never"
-    }
-  ]
+  }
 }
