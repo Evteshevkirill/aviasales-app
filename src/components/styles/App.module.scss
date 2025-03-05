@@ -1,4 +1,4 @@
-@use '../vars.scss' as *;
+@use './vars.scss' as *;
 
 *,
 *:after,
@@ -29,7 +29,4 @@ main {
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
-}
-
-.filter__tickets-menu {
 }

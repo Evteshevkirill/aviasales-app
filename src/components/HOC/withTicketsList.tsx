@@ -2,12 +2,22 @@
 /* eslint-disable consistent-return */
 /* eslint-disable func-names */
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import React, { JSX, useState } from 'react'
 
+import { ITicket } from '../types/types'
 import { getFilteredTickets, transferFilter } from '../redux/selectors'
 
-export default function withTicketsList(Component) {
-  return function () {
+interface IWithTicketsListProps {
+  tickets: ITicket[]
+  visibleTickets: number
+  showMoreTickets: () => void
+  unCheckedAllCheckbox: boolean | null
+}
+
+const withTicketsList = <T extends {}>(
+  Component: React.ComponentType<IWithTicketsListProps>
+): ((props: T) => JSX.Element) => {
+  return function (props) {
     const [visibleTickets, setVisibleTickets] = useState(5)
 
     const filteredTickets = useSelector(getFilteredTickets)
@@ -22,7 +32,8 @@ export default function withTicketsList(Component) {
 
     return (
       <Component
-        tickets={filteredTickets}
+        {...props}
+        tickets={filteredTickets ?? []}
         visibleTickets={visibleTickets}
         showMoreTickets={showMoreTickets}
         unCheckedAllCheckbox={unCheckedAllCheckbox}
@@ -30,3 +41,5 @@ export default function withTicketsList(Component) {
     )
   }
 }
+
+export default withTicketsList

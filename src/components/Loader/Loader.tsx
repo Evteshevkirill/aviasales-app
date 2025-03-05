@@ -1,9 +1,10 @@
+import React, { JSX } from 'react'
 import { useSelector } from 'react-redux'
 import { Alert, Flex, Spin } from 'antd'
 
 import { fetchTickets, transferFilter } from '../redux/selectors'
 
-export default function Loader() {
+const Loader: React.FC = (): JSX.Element => {
   const { loading } = useSelector(fetchTickets)
 
   const { checkedNot, checkedOne, checkedTwo, checkedThree } = useSelector(transferFilter)
@@ -12,7 +13,7 @@ export default function Loader() {
 
   return (
     <Flex vertical style={{ marginTop: 20, textTransform: 'none' }}>
-      <Spin spinning={(loading, !unChecked)}>
+      <Spin spinning={loading && !unChecked}>
         {!unChecked ? (
           <Alert type="info" message="Загружаем билеты" description="Ищем самые лучшие варианты..." />
         ) : null}
@@ -20,3 +21,5 @@ export default function Loader() {
     </Flex>
   )
 }
+
+export default Loader

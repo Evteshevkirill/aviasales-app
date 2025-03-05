@@ -1,18 +1,25 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { fetchSearchId, fetchTickets } from '../Api/fetchTickets'
+import { IFetchTicketsStateTypes, ITicket } from '../types/types'
+
+const initialState: IFetchTicketsStateTypes = {
+  tickets: [],
+  searchId: null,
+  loading: false,
+  error: null,
+}
+
+const isAddTicketsAction = (action: any): action is PayloadAction<ITicket[]> => {
+  return action.type === 'fetchTickets/addTickets'
+}
 
 const fetchTicketsSlice = createSlice({
   name: 'fetchTickets',
-  initialState: {
-    tickets: [],
-    searchId: null,
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -28,9 +35,9 @@ const fetchTicketsSlice = createSlice({
       })
       .addCase(fetchTickets.rejected, (state, action) => {
         state.loading = false
-        state.error = action.payload
+        state.error = action.payload as string | null
       })
-      .addCase('fetchTickets/addTickets', (state, action) => {
+      .addMatcher(isAddTicketsAction, (state, action: PayloadAction<ITicket[]>) => {
         state.tickets.push(...action.payload)
       })
   },

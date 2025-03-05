@@ -1,11 +1,23 @@
-import PropTypes from 'prop-types'
+import React, { JSX } from 'react'
 
 import Ticket from '../Ticket/Ticket'
 import withTicketsList from '../HOC/withTicketsList'
+import { ITicket } from '../types/types'
+import classes from '../styles/TicketsList.module.scss'
 
-import classes from './TicketsList.module.scss'
+interface ITicketsListProps {
+  tickets: ITicket[]
+  visibleTickets: number
+  showMoreTickets: () => void
+  unCheckedAllCheckbox: boolean | null
+}
 
-function TicketsList({ visibleTickets, showMoreTickets, tickets, unCheckedAllCheckbox }) {
+const TicketsList: React.FC<ITicketsListProps> = ({
+  visibleTickets,
+  showMoreTickets,
+  tickets,
+  unCheckedAllCheckbox,
+}): JSX.Element => {
   return (
     <div className={classes['tickets__list-wrapper']}>
       <ul className={classes.tickets__list}>
@@ -24,14 +36,3 @@ function TicketsList({ visibleTickets, showMoreTickets, tickets, unCheckedAllChe
 }
 
 export default withTicketsList(TicketsList)
-
-TicketsList.defaultProps = {
-  tickets: [],
-}
-
-TicketsList.propTypes = {
-  tickets: PropTypes.arrayOf(PropTypes.object),
-  visibleTickets: PropTypes.number.isRequired,
-  showMoreTickets: PropTypes.func.isRequired,
-  unCheckedAllCheckbox: PropTypes.bool.isRequired,
-}

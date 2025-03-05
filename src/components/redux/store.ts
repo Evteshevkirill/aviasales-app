@@ -4,10 +4,13 @@ import transferFilterReducer from './transferFilterSlice'
 import ticketsReducer from './fetchTicketsSlice'
 import ticketsFilterReducer from './ticketsFilterSlice'
 
-export default configureStore({
+export const store = configureStore({
   reducer: {
     fetchTickets: ticketsReducer,
     transferFilter: transferFilterReducer,
     ticketsFilter: ticketsFilterReducer,
   },
 })
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

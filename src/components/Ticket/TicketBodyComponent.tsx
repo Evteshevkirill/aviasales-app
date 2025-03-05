@@ -1,8 +1,18 @@
-import PropTypes from 'prop-types'
+import React from 'react'
 
-import classes from './Ticket.module.scss'
+import classes from '../styles/Ticket.module.scss'
 
-export default function TicketBodyComponent(props) {
+interface ITicketBodyComponentProps {
+  origin: string
+  destination: string
+  stopsText: string
+  stopsInfo: string | null
+  formattedTime: string
+  formattedDuration: string
+  formattedHoursWhere: string
+}
+
+const TicketBodyComponent: React.FC<ITicketBodyComponentProps> = (props) => {
   const { origin, destination, stopsText, stopsInfo, formattedTime, formattedDuration, formattedHoursWhere } = props
   return (
     <div className={classes.ticket__body}>
@@ -28,22 +38,4 @@ export default function TicketBodyComponent(props) {
   )
 }
 
-TicketBodyComponent.defaultProps = {
-  origin: '',
-  destination: '',
-  stopsText: '',
-  stopsInfo: '',
-  formattedTime: '',
-  formattedDuration: '',
-  formattedHoursWhere: '',
-}
-
-TicketBodyComponent.propTypes = {
-  origin: PropTypes.string,
-  destination: PropTypes.string,
-  stopsText: PropTypes.string,
-  stopsInfo: PropTypes.string,
-  formattedTime: PropTypes.string,
-  formattedDuration: PropTypes.string,
-  formattedHoursWhere: PropTypes.string,
-}
+export default TicketBodyComponent

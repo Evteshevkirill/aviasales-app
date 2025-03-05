@@ -7,7 +7,10 @@ const transferSlice = createSlice({
   initialState: { checkedAll: true, checkedNot: true, checkedOne: true, checkedTwo: true, checkedThree: true },
   reducers: {
     checkAll(state) {
-      Object.keys(state).forEach((key) => (state[key] = true))
+      Object.keys(state).forEach((key) => {
+        const keyTyped = key as keyof typeof state
+        state[keyTyped] = true
+      })
     },
     checkNot(state) {
       state.checkedNot = !state.checkedNot
@@ -28,7 +31,10 @@ const transferSlice = createSlice({
       state.checkedAll = false
     },
     clearCheck(state) {
-      Object.keys(state).forEach((key) => (state[key] = false))
+      Object.keys(state).forEach((key) => {
+        const keyTyped = key as keyof typeof state
+        state[keyTyped] = true
+      })
     },
   },
 })

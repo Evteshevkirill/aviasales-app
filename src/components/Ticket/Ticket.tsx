@@ -1,9 +1,15 @@
-import PropTypes from 'prop-types'
+import React, { JSX } from 'react'
+
+import { ITicket } from '../types/types'
+import classes from '../styles/Ticket.module.scss'
 
 import TicketsBody from './TicketsBody'
-import classes from './Ticket.module.scss'
 
-export default function Ticket({ ticket }) {
+interface ITicketProps {
+  ticket: ITicket
+}
+
+const Ticket: React.FC<ITicketProps> = ({ ticket }): JSX.Element => {
   const { price, carrier, segments } = ticket
   return (
     <li className={classes.ticket}>
@@ -22,14 +28,4 @@ export default function Ticket({ ticket }) {
   )
 }
 
-Ticket.defaultProps = {
-  ticket: {},
-}
-
-Ticket.propTypes = {
-  ticket: PropTypes.shape({
-    price: PropTypes.number,
-    carrier: PropTypes.string,
-    segments: PropTypes.array,
-  }),
-}
+export default Ticket

@@ -1,11 +1,11 @@
+import React, { JSX } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { handlePrice, handleFast, handleOptimal } from '../redux/ticketsFilterSlice'
 import { ticketsFilter } from '../redux/selectors'
+import classes from '../styles/FilterTickets.module.scss'
 
-import classes from './FilterTickets.module.scss'
-
-export default function FilterTickets() {
+const FilterTickets: React.FC = (): JSX.Element => {
   const dispatch = useDispatch()
   const { lowPrice, fast, optimal } = useSelector(ticketsFilter)
 
@@ -35,3 +35,5 @@ export default function FilterTickets() {
     </div>
   )
 }
+
+export default FilterTickets

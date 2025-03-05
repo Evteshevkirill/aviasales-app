@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import React, { JSX } from 'react'
 
 import Logo from '../Header/Logo'
 import FilterTickets from '../FilterTickets/FilterTickets'
@@ -6,10 +6,14 @@ import FilterTransfer from '../FilterTransfer/FilterTransfer'
 import TicketsList from '../TicketsList/TicketsList'
 import Loader from '../Loader/Loader'
 import withApp from '../HOC/withApp'
+import classes from '../styles/App.module.scss'
 
-import classes from './App.module.scss'
+interface IAppProps {
+  error: string | null
+  loading: boolean
+}
 
-function App({ error, loading }) {
+const App: React.FC<IAppProps> = ({ error, loading }): JSX.Element => {
   return (
     <div className={classes['aviasales-app']}>
       <Logo />
@@ -29,12 +33,3 @@ function App({ error, loading }) {
 }
 
 export default withApp(App)
-
-App.defaultProps = {
-  error: '',
-}
-
-App.propTypes = {
-  error: PropTypes.string,
-  loading: PropTypes.bool.isRequired,
-}

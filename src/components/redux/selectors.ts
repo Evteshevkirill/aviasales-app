@@ -2,12 +2,16 @@
 /* eslint-disable indent */
 import { createSelector } from 'reselect'
 
-export const fetchTickets = (state) => state.fetchTickets.tickets
-export const transferFilter = (state) => state.transferFilter
-export const ticketsFilter = (state) => state.ticketsFilter
+import { RootState } from './store'
+
+export const stateTickets = (state: RootState) => state.fetchTickets.tickets
+
+export const fetchTickets = (state: RootState) => state.fetchTickets
+export const transferFilter = (state: RootState) => state.transferFilter
+export const ticketsFilter = (state: RootState) => state.ticketsFilter
 
 export const getFilteredTickets = createSelector(
-  [fetchTickets, transferFilter, ticketsFilter],
+  [stateTickets, transferFilter, ticketsFilter],
   (AllTickets, activeTransferFilter, activeTicketsFilter) => {
     const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree } = activeTransferFilter
 

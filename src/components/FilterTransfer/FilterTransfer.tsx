@@ -1,11 +1,19 @@
 /* eslint-disable indent */
-import PropTypes from 'prop-types'
+import React, { JSX } from 'react'
 
 import withFilterTransfer from '../HOC/withFilterTransfer'
+import classes from '../styles/FilterTransfer.module.scss'
 
-import classes from './FilterTransfer.module.scss'
+interface FilterTransferProps {
+  checkedAll: boolean
+  checkedNot: boolean
+  checkedOne: boolean
+  checkedTwo: boolean
+  checkedThree: boolean
+  changeCheckBox: (id: string) => void
+}
 
-function FilterTransfer(props) {
+const FilterTransfer: React.FC<FilterTransferProps> = (props): JSX.Element => {
   const { checkedAll, checkedNot, checkedOne, checkedTwo, checkedThree, changeCheckBox } = props
   return (
     <section className={classes.filters__transfer}>
@@ -72,12 +80,3 @@ function FilterTransfer(props) {
 }
 
 export default withFilterTransfer(FilterTransfer)
-
-FilterTransfer.propTypes = {
-  changeCheckBox: PropTypes.func.isRequired,
-  checkedAll: PropTypes.bool.isRequired,
-  checkedNot: PropTypes.bool.isRequired,
-  checkedOne: PropTypes.bool.isRequired,
-  checkedTwo: PropTypes.bool.isRequired,
-  checkedThree: PropTypes.bool.isRequired,
-}
