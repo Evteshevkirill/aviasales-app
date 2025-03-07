@@ -2,10 +2,12 @@
 /* eslint-disable consistent-return */
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
+import { ITicket } from '../types/types'
+
 const API_BASE = 'https://aviasales-test-api.kata.academy'
 
 // Получение searchId
-export const fetchSearchId = createAsyncThunk<string, void, {}>('fetchTickets/fetchSearchId', async () => {
+export const fetchSearchId = createAsyncThunk<string, void, object>('fetchTickets/fetchSearchId', async () => {
   const response = await fetch(`${API_BASE}/search`)
   const data = await response.json()
   return data.searchId
@@ -27,7 +29,7 @@ export const fetchTickets = createAsyncThunk(
           return fetchTickets(searchId)
         }
 
-        const data: any = await response.json()
+        const data: { tickets: ITicket[]; stop: boolean } = await response.json()
 
         dispatch({ type: 'fetchTickets/addTickets', payload: data.tickets })
 
